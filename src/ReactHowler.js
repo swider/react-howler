@@ -41,6 +41,7 @@ class ReactHowler extends Component {
         loop: props.loop,
         preload: props.preload,
         volume: props.volume,
+        rate: props.rate,
         onend: props.onEnd,
         onplay: props.onPlay,
         onpause: props.onPause,
@@ -199,6 +200,27 @@ class ReactHowler extends Component {
   }
 
   /**
+   * Set/get current playback speed of player
+   * @param  {Number} rate [set player to rate]
+   * @return {Number}     [return current rate]
+   */
+  rate (rate = null) {
+    if (!this.howler) {
+      return 1
+    }
+
+    if (!rate && rate !== 0) {
+      return this.howler.rate()
+    }
+
+    if (rate && rate >= 0.5 && rate <= 4.0) {
+      this.howler.rate(rate)
+      return rate
+    }
+    console.error('Invalid playback rate. Must be a number >=0.5 and <=4.0')
+  }
+
+  /**
    * Get the duration of the audio source
    * @return {Number} [Audio length in seconds. Will return 0 until after the load event fires]
    */
@@ -233,6 +255,7 @@ ReactHowler.propTypes = {
   loop: PropTypes.bool,
   preload: PropTypes.bool,
   volume: PropTypes.number,
+  rate: PropTypes.number,
   onEnd: PropTypes.func,
   onPause: PropTypes.func,
   onPlay: PropTypes.func,
@@ -251,6 +274,7 @@ ReactHowler.defaultProps = {
   preload: true,
   loop: false,
   volume: 1.0,
+  rate: 1.0,
   onEnd: noop,
   onPause: noop,
   onPlay: noop,
