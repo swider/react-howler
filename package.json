@@ -1,13 +1,13 @@
 {
   "name": "react-howler",
-  "version": "3.7.4",
+  "version": "4.0.0",
   "description": "A React.js wrapper for howler.js (audio player)",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "prebabelify": "rimraf lib",
-    "babelify": "babel src -d lib",
-    "example:react": "npm run babelify && cd examples/react && yarn install && NODE_PATH=../../lib npm start",
-    "example:react:build": "npm run lint && npm run babelify && cd examples/react && yarn install && NODE_PATH=../../lib npm run build",
+    "prebabelify": "rimraf dist",
+    "babelify": "babel src -d dist",
+    "example:react": "npm run babelify && cd examples/react && yarn install && NODE_PATH=../../dist npm start",
+    "example:react:build": "npm run lint && npm run babelify && cd examples/react && yarn install && NODE_PATH=../../dist npm run build",
     "predeploy": "npm run example:react:build",
     "deploy": "babel-node bin/deploy-gh-pages",
     "prepublish": "npm run lint && npm run babelify",
@@ -16,11 +16,12 @@
     "release": "npmpub"
   },
   "files": [
-    "lib/*"
+    "dist/*"
   ],
   "standard": {
     "ignore": [
-      "examples/react/build/"
+      "examples",
+      "dist"
     ]
   },
   "repository": {
@@ -43,7 +44,6 @@
   },
   "homepage": "https://github.com/swider/react-howler#readme",
   "dependencies": {
-    "howler": "^2.2.0",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
@@ -53,10 +53,14 @@
     "babel-preset-stage-2": "^6.17.0",
     "eslint-plugin-react": "^7.5.1",
     "gh-pages": "^1.1.0",
+    "howler": "^2.2.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "rimraf": "^3.0.2",
     "standard": "^14.3.4"
+  },
+  "peerDependencies": {
+    "howler": "^2.0.0"
   },
   "greenkeeper": {
     "ignore": [

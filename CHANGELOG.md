@@ -1,3 +1,10 @@
+# 4.0.0 - 2020-05-28
+
+- Breaking: Move Howler.js to peer dependency
+- Added: `xhrWithCredentials` prop
+- Added: `rate` prop & method
+- Updated: Stop using `componentWillReceiveProps`
+
 # 3.7.4 - 2019-01-01
 
 - Updated: Use Howler.js version `^2.1.1`. Revert to using semantic Howler.js versions (Rolling back #39) 

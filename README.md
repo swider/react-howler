@@ -21,7 +21,7 @@ Props can be passed to control playback and react to events such as end, load, p
 
 # Usage
 
-`npm install --save react-howler`
+`npm install --save react-howler howler`
 
 ```javascript
 import React, { Component } from 'react'
